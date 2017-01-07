@@ -1,0 +1,46 @@
+#editor-wrap {
+  height: 100vh;
+}
+
+.hide {
+  display: none;
+}
+
+#graph svg {
+  max-width: 100%;
+}
+
+.column {
+  padding: 0!important;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  padding-left: 40px;
+}
+
+input.url {
+  height: 20px;
+  width: 80%;
+}
+
+/* Larger than mobile screen */
+@media (max-width: 40.0rem) {
+  
+}
+
+/* Larger than tablet screen */
+@media (min-width: 80.0rem) {
+  
+}
+
+/* Larger than desktop screen */
+@media (min-width: 120.0rem) {
+  
+}

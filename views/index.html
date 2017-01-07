@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Graphviz</title>
+    <meta name="description" content="Live Graphviz editor">
+    <link id="favicon" rel="icon" href="https://hyperdev.com/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.2.2/milligram.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.21.0/codemirror.css">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    
+    <div class="container-fluid">
+      <div class="row">
+        <div class="column" id="editor-wrap">
+          <div id="editor"></div>
+        </div>
+        <div class="column" id="graph-wrap">
+          
+          <div id="embed-graph">
+            <form>
+              <fieldset>
+                <input type="text" class="url"/>
+                
+                <div>
+                  Layout engine:
+                  <input type="radio" value="dot" name="layout" id="layout-dot" checked/><label class="label-inline" for="layout-dot">dot</label>
+                  <input type="radio" value="neato" name="layout" id="layout-neato"/><label class="label-inline" for="layout-neato">neato</label>
+                  <input type="radio" value="fdp" name="layout" id="layout-fdp"/><label class="label-inline" for="layout-fdp">fdp</label>                  
+                  <input type="radio" value="sfdp" name="layout" id="layout-sfdp" disabled/><label class="label-inline" for="layout-sfdp">sfdp</label>
+                  <input type="radio" value="twopi" name="layout" id="layout-twopi"/><label class="label-inline" for="layout-twopi">twopi</label>
+                  <input type="radio" value="circo" name="layout" id="layout-circo"/><label class="label-inline" for="layout-circo">circo</label>
+                </div>                
+                
+                <div>
+                  Output format
+                  <input type="radio" value="svg" name="format" id="format-svg" checked/><label class="label-inline" for="format-svg">SVG</label>
+                  <input type="radio" value="png" name="format" id="format-png"/><label class="label-inline" for="format-png">PNG</label>
+                  <input type="radio" value="jpg" name="format" id="format-jpg"/><label class="label-inline" for="format-jpg">JPG</label>                  
+                </div>
+
+              </fieldset>
+            </form>
+          </div>
+          <div id="graph"></div>
+          
+          <a href="#" class="download button float-right" target="_blank">Download</a>
+        </div>
+      </div>
+      <div class="row" id="footer">
+        <div class="column">
+          <p>Made with &hearts; by <a href="http://cun.ninja">Long Nguyen</a>. Powered by <a href="http://gomix.com/#!/project/graphviz">Gomix.com</a>.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Your web-app is https, so your scripts need to be too -->
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.21.0/codemirror.js"></script>            
+    <script src="/client.js"></script>
+
+  <code id="samples" class="hide">
+digraph G {
+
+	subgraph cluster_0 {
+		style=filled;
+		color=lightgrey;
+		node [style=filled,color=white];
+		a0 -> a1 -> a2 -> a3;
+		label = "process #1";
+	}
+
+	subgraph cluster_1 {
+		node [style=filled];
+		b0 -> b1 -> b2 -> b3;
+		label = "process #2";
+		color=blue
+	}
+	start -> a0;
+	start -> b0;
+	a1 -> b3;
+	b2 -> a3;
+	a3 -> a0;
+	a3 -> end;
+	b3 -> end;
+
+	start [shape=Mdiamond];
+	end [shape=Msquare];
+}
+  </code>
+
+  </body>
+</html>
